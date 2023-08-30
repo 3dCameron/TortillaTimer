@@ -7,6 +7,7 @@ var timerStates = [
 var currentIndex = 0;
 var secondsRemaining = timerStates[0].seconds;
 var timerInterval = undefined;
+var ring = new Audio('./ring.mp3');
 
 document.body.onkeyup = function(e) {
     if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
@@ -44,6 +45,8 @@ function countDown() {
 function endTimer() {
     clearInterval(timerInterval);
     timerInterval = undefined;
+
+    ring.play();
 
     if (finishedTortilla()) {
         currentIndex = 0;
